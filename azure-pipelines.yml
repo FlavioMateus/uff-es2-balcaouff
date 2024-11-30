@@ -11,10 +11,11 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
 - script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+    git clone https://willianoliveir1@dev.azure.com/willianoliveir1/uff-es2-balcaouff/_git/uff-es2-balcaouff
+    cd uff-es2-balcaouff
+    git remote add github https://github.com/FlavioMateus/uff-es2-balcaouff-no-git.git
+    git push github --all
+  displayName: 'Sync Azure DevOps to GitHub'
+  env:
+    GITHUB_TOKEN: $(GITHUB_TOKEN)
