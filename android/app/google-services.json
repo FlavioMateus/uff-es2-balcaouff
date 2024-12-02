@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "431577134504",
+    "project_id": "balcao-uff",
+    "storage_bucket": "balcao-uff.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:431577134504:android:1b872180117bed09d0599d",
+        "android_client_info": {
+          "package_name": "br.uff.balcaouff"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6A0gyJzxWUEwa-g0fmKA_9iOOc4psAus"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
