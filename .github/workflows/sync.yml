@@ -14,19 +14,17 @@ jobs:
 
       - name: Clone Azure DevOps repo
         run: |
-          git clone https://$AZURE_DEVOPS_PAT@dev.azure.com/willianoliveir1/uff-es2-balcaouff/_git/uff-es2-balcaouff azure-repo
+          git clone https://${{ secrets.AZURE_DEVOPS_PAT }}@dev.azure.com/willianoliveir1/uff-es2-balcaouff/_git/uff-es2-balcaouff azure-repo
 
-      - name: Copy files
+      - name: Copy files from GitHub checkout
         run: |
-          rsync -av --exclude='azure-repo/' ./ azure-repo/
+          cp -r ./ azure-repo/
 
       - name: Commit and push to Azure DevOps
         run: |
           cd azure-repo
-          git config user.email "flaviomateus@id.uff.br"
-          git config user.name "FlavioMateus"
+          git config --global user.email "flaviomateus@id.uff.br"
+          git config --global user.name "FlavioMateus"
           git add .
           git commit -m "Sync from GitHub" || echo "Nothing to commit"
           git push origin main
-    env:
-      AZURE_DEVOPS_PAT: ${{ secrets.AZURE_DEVOPS_PAT }}
