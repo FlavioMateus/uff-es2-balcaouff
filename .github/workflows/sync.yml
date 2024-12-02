@@ -3,30 +3,32 @@ name: Sync to Azure DevOps
 on:
   push:
     branches:
-      - main  # Você pode alterar a branch para aquela que deseja monitorar
+      - main
 
 jobs:
   sync:
     runs-on: ubuntu-latest
 
     steps:
-      # Etapa 1: Fazer checkout do repositório GitHub
       - name: Checkout GitHub repo
         uses: actions/checkout@v3
 
-      # Etapa 2: Clonar o repositório do Azure DevOps
       - name: Clone Azure DevOps repo
         run: |
           git clone https://$AZURE_DEVOPS_PAT@dev.azure.com/willianoliveir1/uff-es2-balcaouff/_git/uff-es2-balcaouff azure-repo
         env:
           AZURE_DEVOPS_PAT: ${{ secrets.AZURE_DEVOPS_PAT }}
 
-      # Etapa 3: Copiar arquivos para o repositório Azure DevOps
       - name: Sync files to Azure DevOps repo
         run: |
-          rsync -av --exclude='.git/' --exclude='azure-repo/' ./ azure-repo/
+          rsync -av --exclude='.git/' ./ azure-repo/
 
-      # Etapa 4: Fazer commit e push no Azure DevOps
+      - name: Debug token
+        run: |
+          echo "Token starts with: ${AZURE_DEVOPS_PAT:0:4}********"
+        env:
+          AZURE_DEVOPS_PAT: ${{ secrets.AZURE_DEVOPS_PAT }}
+
       - name: Commit and push to Azure DevOps
         run: |
           cd azure-repo
@@ -35,5 +37,6 @@ jobs:
           git config user.name "Flavio Mateus"
           git add .
           git commit -m "Sync from GitHub" || echo "Nothing to commit"
-          git push origin main
-
+          git push https://$AZURE_DEVOPS_PAT@dev.azure.com/willianoliveir1/uff-es2-balcaouff/_git/uff-es2-balcaouff main
+        env:
+          AZURE_DEVOPS_PAT: ${{ secrets.AZURE_DEVOPS_PAT }}
