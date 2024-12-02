@@ -16,9 +16,9 @@ jobs:
         run: |
           git clone https://${{ secrets.AZURE_DEVOPS_PAT }}@dev.azure.com/willianoliveir1/uff-es2-balcaouff/_git/uff-es2-balcaouff azure-repo
 
-      - name: Copy files from GitHub checkout
+      - name: Copy files from GitHub checkout to Azure DevOps repo
         run: |
-          cp -r ./ azure-repo/
+          cp -r $GITHUB_WORKSPACE/* azure-repo/
 
       - name: Commit and push to Azure DevOps
         run: |
