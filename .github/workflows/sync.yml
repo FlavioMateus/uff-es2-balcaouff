@@ -12,12 +12,9 @@ jobs:
       - name: Checkout GitHub repo
         uses: actions/checkout@v3
 
-      - name: Checkout Azure DevOps repo
-        uses: actions/checkout@v3
-        with:
-          repository: "https://willianoliveir1@dev.azure.com/willianoliveir1/uff-es2-balcaouff/_git/uff-es2-balcaouff"
-          token: ${{ secrets.AZURE_DEVOPS_PAT }}
-          path: azure-repo
+      - name: Clone Azure DevOps repo
+        run: |
+          git clone https://$AZURE_DEVOPS_PAT@dev.azure.com/willianoliveir1/uff-es2-balcaouff/_git/uff-es2-balcaouff azure-repo
 
       - name: Copy files
         run: |
@@ -26,8 +23,10 @@ jobs:
       - name: Commit and push to Azure DevOps
         run: |
           cd azure-repo
-          git config --global user.email "flaviomateus@id.uff.br" 
-          git config --global user.name "FlavioMateus" 
+          git config user.email "flaviomateus@id.uff.br"
+          git config user.name "FlavioMateus"
           git add .
-          git commit -m "Sync from GitHub"
-          git push origin main 
+          git commit -m "Sync from GitHub" || echo "Nothing to commit"
+          git push origin main
+    env:
+      AZURE_DEVOPS_PAT: ${{ secrets.AZURE_DEVOPS_PAT }}
