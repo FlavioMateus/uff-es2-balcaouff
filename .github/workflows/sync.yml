@@ -24,14 +24,15 @@ jobs:
       # Etapa 3: Copiar arquivos para o repositório Azure DevOps
       - name: Sync files to Azure DevOps repo
         run: |
-          rsync -av --exclude='azure-repo/' ./ azure-repo/
+          rsync -av --exclude='.git/' --exclude='azure-repo/' ./ azure-repo/
 
       # Etapa 4: Fazer commit e push no Azure DevOps
       - name: Commit and push to Azure DevOps
         run: |
           cd azure-repo
-          git config user.email "flaviomateuspf@hotmail.com.br"  
-          git config user.name "Flavio Mateus"               
+          git remote set-url origin https://$AZURE_DEVOPS_PAT@dev.azure.com/willianoliveir1/uff-es2-balcaouff/_git/uff-es2-balcaouff
+          git config user.email "flaviomateuspf@hotmail.com.br"
+          git config user.name "Flavio Mateus"
           git add .
           git commit -m "Sync from GitHub" || echo "Nothing to commit"
           git push origin main
