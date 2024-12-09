@@ -1,42 +1,47 @@
 import 'package:flutter/material.dart';
-import 'package:balcao_uff/views/login.dart'; // Tela de Login
-import 'package:balcao_uff/views/register.dart'; // Tela de Registro
+import 'package:firebase_auth/firebase_auth.dart';
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
   @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    super.initState();
+    _checkAuthState();
+  }
+
+  Future<void> _checkAuthState() async {
+    await Future.delayed(const Duration(seconds: 2));
+
+    final user = FirebaseAuth.instance.currentUser;
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (user != null) {
+        Navigator.pushReplacementNamed(context, '/pagina_inicial');
+      } else {
+        Navigator.pushReplacementNamed(context, '/welcome');
+      }
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.blueAccent,
+    return const Scaffold(
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'Bem-vindo ao App!',
-              style: TextStyle(fontSize: 24, color: Colors.white),
+          children: const [
+            Text(
+              'Balcão UFF',
+              style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
             ),
-            const SizedBox(height: 50),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => TelaLogin()),
-                );
-              },
-              child: const Text('Ir para Login'),
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const TelaRegistro()),
-                );
-              },
-              child: const Text('Ir para Registro'),
-            ),
+            SizedBox(height: 20),
+            CircularProgressIndicator(), // Indicador de carregamento
           ],
         ),
       ),

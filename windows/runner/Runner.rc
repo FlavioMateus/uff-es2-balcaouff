@@ -93,7 +93,7 @@ BEGIN
             VALUE "FileDescription", "balcao_uff" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "balcao_uff" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2024 com.example. All rights reserved." "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2024 br.uff. All rights reserved." "\0"
             VALUE "OriginalFilename", "balcao_uff.exe" "\0"
             VALUE "ProductName", "balcao_uff" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"

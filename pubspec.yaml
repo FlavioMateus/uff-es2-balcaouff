@@ -1,19 +1,21 @@
 name: balcao_uff
 description: A new Flutter project.
 
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 version: 0.0.1+1
 
 environment:
-  sdk: '>=2.19.4 <4.0.0'
+  sdk: ">=2.19.4 <4.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-
-  english_words: ^4.0.0
+  firebase_core: ^3.8.1 # Add the Firebase Core package
+  firebase_auth: ^5.3.4 # Example: Firebase Authentication (you can add other services as needed)
+  cloud_firestore: ^5.5.1 # Example: Cloud Firestore
   provider: ^6.0.0
+  english_words: ^4.0.0
 
 dev_dependencies:
   flutter_test:
