@@ -1,0 +1,23 @@
+Funcionalidades do Produto:
+Autenticação: O usuário deve se autenticar com a sua conta UFF ao entrar no sistema
+Criação de Anúncios: O usuário pode criar anúncios preenchendo um formulário com informações detalhadas, fotos, tipo de anúncio (busca ou oferta), preço (se aplicável), informações de contato, localização e categoria (livros, roupas, móveis, aulas particulares)
+Busca de Anúncios: O usuário pode buscar anúncios aplicando filtros baseados em: categoria, localização, preço e outros critérios relevantes. Ao selecionar um anúncio, é possível ver informações completas do anúncio e do anunciante, como reputação, nome e ocupação na universidade
+Comunicação: O sistema permite a comunicação entre usuários
+Perfil de Usuário: O usuário pode gerenciar seu perfil
+Gerenciamento de Anúncios: O usuário pode gerenciar seus próprios anúncios
+
+
+Requisitos Funcionais:
+Autenticação de Usuários: O sistema deve permitir que os usuários se autentiquem utilizando credenciais específicas, como as da UFF.
+Criação de Anúncios: O sistema deve permitir que os usuários criem anúncios preenchendo um formulário com detalhes específicos.
+Busca de Anúncios: O sistema deve permitir que os usuários busquem anúncios aplicando diversos filtros.
+Comunicação entre Usuários: O sistema deve permitir que os usuários enviem mensagens uns aos outros.
+Gerenciamento de Perfil: O sistema deve permitir que os usuários atualizem suas informações pessoais.
+Gerenciamento de Anúncios: O sistema deve permitir que os usuários editem ou removam seus anúncios.
+
+Requisitos Não Funcionais:
+Desempenho: O sistema deve ser capaz de processar um grande número de usuários simultaneamente sem degradação significativa de desempenho.
+Segurança: O sistema deve garantir a segurança dos dados dos usuários, incluindo autenticação segura e proteção contra acessos não autorizados.
+Usabilidade: O sistema deve ser fácil de usar, com uma interface intuitiva e amigável.
+Compatibilidade: O sistema deve ser compatível com diferentes navegadores e dispositivos.
+Escalabilidade: O sistema deve ser escalável para suportar um aumento no número de usuários e dados sem perda de desempenho.
